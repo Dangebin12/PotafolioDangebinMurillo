@@ -7,8 +7,17 @@
     <title>Acerca de - Dangebin Murillo</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        body {
+            background-color: #ffffff;
+        }
+
+        .about-hero {
+            padding: 10rem 0 4rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        }
+
         .about-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
@@ -16,71 +25,67 @@
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             margin: 0 auto 2rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
-            color: white;
+            overflow: hidden;
         }
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .skill-item {
-            padding: 1rem;
-            background: var(--color-card-hover);
-            border-radius: 8px;
+        .about-title {
+            font-size: 3rem;
+            font-weight: 300;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
             text-align: center;
-            border: 1px solid var(--color-border);
-            transition: var(--transition);
         }
 
-        .skill-item:hover {
-            border-color: var(--color-accent);
-            transform: translateY(-2px);
+        .about-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444444;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .content-section {
+            padding: 4rem 0;
+            background-color: #ffffff;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .skills-grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .skills-category {
-            margin-bottom: 1.5rem;
             padding: 1.5rem;
             border-radius: 12px;
-            border: 1px solid var(--color-border);
-            transition: var(--transition);
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+            background-color: #ffffff;
         }
 
         .skills-category:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        .skills-category:nth-child(1) {
-            background-color: #f8f9fa;
-        }
-
-        .skills-category:nth-child(2) {
-            background-color: #fff8e6;
-        }
-
-        .skills-category:nth-child(3) {
-            background-color: #e8f5e9;
-        }
-
-        .skills-category:nth-child(4) {
-            background-color: #f3e5f5;
-        }
-
-        .skills-category:nth-child(5) {
-            background-color: #e3f2fd;
-        }
-
-        .skills-category:nth-child(6) {
-            background-color: #fce4ec;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-color: #0066ff;
         }
 
         .category-header {
@@ -91,15 +96,15 @@
         }
 
         .category-icon {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
         }
 
         .skills-category h4 {
-            color: var(--color-accent);
-            font-size: 0.85rem;
+            color: #0066ff;
+            font-size: 0.9rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.2px;
             margin: 0;
         }
 
@@ -107,32 +112,158 @@
             list-style: none;
             padding: 0;
             margin: 0;
-            line-height: 1.8;
+            line-height: 2;
         }
 
         .skills-category li {
-            color: var(--color-text);
+            color: #333333;
             font-size: 0.95rem;
         }
 
-        .skills-category li::before {
-            display: none;
+        .projects-section {
+            padding: 4rem 0;
+            background-color: #fafbfc;
         }
 
-        .skills-grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
+        .projects-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .project-item {
+            margin-bottom: 2.5rem;
+            padding: 2.5rem;
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .project-item:hover {
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+            transform: translateY(-6px);
+            border-color: #0066ff;
+        }
+
+        .project-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #0066ff;
+            opacity: 0.2;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .project-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-title-main {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+            color: #666666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-meta span {
+            display: flex;
+            align-items: center;
+        }
+
+        .project-meta span::after {
+            content: "•";
+            margin: 0 0.75rem;
+            color: #cccccc;
+        }
+
+        .project-meta span:last-child::after {
+            content: "";
+        }
+
+        .project-description {
+            color: #333333;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .project-highlights {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+
+        .project-highlights li {
+            color: #333333;
+            line-height: 1.9;
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-highlights li::before {
+            content: "•";
+            color: #0066ff;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .project-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin: 1.5rem 0;
+        }
+
+        .stack-tag {
+            background: #f0f4f8;
+            padding: 0.4rem 0.9rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #1a1a1a;
+            border: 1px solid #d0dae6;
+            font-weight: 500;
+        }
+
+        .project-link {
+            color: #0066ff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+            color: #0052cc;
         }
 
         .timeline {
             margin: 3rem 0;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .timeline-item {
             padding: 1.5rem 0;
-            border-left: 2px solid var(--color-border);
+            border-left: 2px solid #e0e0e0;
             padding-left: 2rem;
             margin-left: 1rem;
             position: relative;
@@ -146,13 +277,61 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background: var(--color-accent);
+            background: #0066ff;
         }
 
         .timeline-year {
             font-weight: 600;
-            color: var(--color-accent);
+            color: #0066ff;
             margin-bottom: 0.5rem;
+        }
+
+        .timeline-item h4 {
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item p {
+            color: #666666;
+            margin-top: 0.5rem;
+        }
+
+        .cta-section {
+            margin-top: 4rem;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #0066ff 0%, #0052cc 100%);
+            border-radius: 16px;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-section h3 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: #ffffff;
+            color: #0066ff;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
@@ -169,145 +348,256 @@
         </div>
     </nav>
 
-    <!-- Contenido About -->
-    <section class="hero">
+    <!-- Hero Acerca de -->
+    <section class="about-hero">
         <div class="container">
             <div class="about-content">
                 <div class="about-image">
-                    <img src="foto de perfil.png" alt="Dangebin Murillo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                    <img src="foto%20de%20perfil.png" alt="Dangebin Murillo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                 </div>
                 
-                <h1 class="hero-title">Hola, soy Dangebin</h1>
+                <h1 class="about-title">Hola, soy Dangebin</h1>
                 
-                <p class="hero-description" style="max-width: 100%; margin-bottom: 1.5rem;">
+                <p class="about-description">
                     Soy un desarrollador y diseñador apasionado por crear experiencias digitales 
                     excepcionales. Me especializo en convertir ideas complejas en interfaces 
                     intuitivas y funcionales.
                 </p>
 
-                <p class="hero-description" style="max-width: 100%; margin-bottom: 1.5rem;">
+                <p class="about-description">
                     Con experiencia en desarrollo web full-stack y diseño de interfaces, 
                     combino habilidades técnicas con sensibilidad estética para construir 
                     productos que no solo funcionan bien, sino que también se ven increíbles.
                 </p>
+            </div>
+        </div>
+    </section>
 
-                <h3 class="section-title" style="margin-top: 3rem;">Habilidades Técnicas</h3>
-                
-                <div class="skills-grid-container">
-                    <div class="skills-category">
-                        <div class="category-header">
-                            <span class="category-icon">💻</span>
-                            <h4>Backend & Lenguajes</h4>
-                        </div>
-                        <ul>
-                            <li>PHP 8.3, Laravel 10, Python, C#</li>
-                            <li>JavaScript, Node.js</li>
-                        </ul>
+    <!-- Habilidades Técnicas -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Habilidades Técnicas</h2>
+            
+            <div class="skills-grid-container">
+                <div class="skills-category">
+                    <div class="category-header">
+                        <span class="category-icon">💻</span>
+                        <h4>Backend & Lenguajes</h4>
                     </div>
-
-                    <div class="skills-category">
-                        <div class="category-header">
-                            <span class="category-icon">🎨</span>
-                            <h4>Frontend</h4>
-                        </div>
-                        <ul>
-                            <li>HTML5, CSS3, Bootstrap 5</li>
-                            <li>JavaScript</li>
-                        </ul>
-                    </div>
-
-                    <div class="skills-category">
-                        <div class="category-header">
-                            <span class="category-icon">🗄️</span>
-                            <h4>Bases de Datos</h4>
-                        </div>
-                        <ul>
-                            <li>MySQL 8.0, SQL Server</li>
-                            <li>Oracle SQL</li>
-                        </ul>
-                    </div>
-
-                    <div class="skills-category">
-                        <div class="category-header">
-                            <span class="category-icon">⚙️</span>
-                            <h4>DevOps & Herramientas</h4>
-                        </div>
-                        <ul>
-                            <li>GitHub, Composer, NPM, AWS</li>
-                            <li>Windows Server 2019</li>
-                        </ul>
-                    </div>
-
-                    <div class="skills-category">
-                        <div class="category-header">
-                            <span class="category-icon">📊</span>
-                            <h4>Administración</h4>
-                        </div>
-                        <ul>
-                            <li>Power BI, Microsoft 365, Google Analytics, Notion</li>
-                        </ul>
-                    </div>
-
-                    <div class="skills-category">
-                        <div class="category-header">
-                            <span class="category-icon">🔒</span>
-                            <h4>Seguridad</h4>
-                        </div>
-                        <ul>
-                            <li>RBAC, bcrypt, OWASP</li>
-                            <li>Protección SQL Injection</li>
-                        </ul>
-                    </div>
+                    <ul>
+                        <li>PHP 8.3, Laravel 10, Python, C#</li>
+                        <li>JavaScript, Node.js</li>
+                    </ul>
                 </div>
 
-                <h3 class="section-title" style="margin-top: 3rem;">Experiencia</h3>
+                <div class="skills-category">
+                    <div class="category-header">
+                        <span class="category-icon">🎨</span>
+                        <h4>Frontend</h4>
+                    </div>
+                    <ul>
+                        <li>HTML5, CSS3, Bootstrap 5</li>
+                        <li>JavaScript</li>
+                    </ul>
+                </div>
+
+                <div class="skills-category">
+                    <div class="category-header">
+                        <span class="category-icon">🗄️</span>
+                        <h4>Bases de Datos</h4>
+                    </div>
+                    <ul>
+                        <li>MySQL 8.0, SQL Server</li>
+                        <li>Oracle SQL</li>
+                    </ul>
+                </div>
+
+                <div class="skills-category">
+                    <div class="category-header">
+                        <span class="category-icon">⚙️</span>
+                        <h4>DevOps & Herramientas</h4>
+                    </div>
+                    <ul>
+                        <li>GitHub, Composer, NPM, AWS</li>
+                        <li>Windows Server 2019</li>
+                    </ul>
+                </div>
+
+                <div class="skills-category">
+                    <div class="category-header">
+                        <span class="category-icon">📊</span>
+                        <h4>Administración</h4>
+                    </div>
+                    <ul>
+                        <li>Power BI, Microsoft 365, Google Analytics, Notion</li>
+                    </ul>
+                </div>
+
+                <div class="skills-category">
+                    <div class="category-header">
+                        <span class="category-icon">🔒</span>
+                        <h4>Seguridad</h4>
+                    </div>
+                    <ul>
+                        <li>RBAC, bcrypt, OWASP</li>
+                        <li>Protección SQL Injection</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proyectos Destacados -->
+    <section class="projects-section">
+        <div class="container">
+            <h2 class="section-title">Proyectos Destacados</h2>
+            <div class="projects-container">
+                    <!-- Proyecto 01 -->
+                    <div class="project-item">
+                        <div class="project-number">01</div>
+                        <div class="project-header">
+                            <h4 class="project-title-main">CONTROL ADMINISTRATIVO EMPRESARIAL (CAESA)</h4>
+                            <div class="project-meta">
+                                <span>La Meta Automotriz, Tegucigalpa</span>
+                                <span>Sep 2025 – Ene 2026</span>
+                                <span>Líder Full-Stack</span>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Plataforma web empresarial integral que centraliza y automatiza los procesos administrativos de La Meta Automotriz, incluyendo cuatro módulos principales: Recursos Humanos, Flota de Vehículos, Seguridad Corporativa y Tickets IT.
+                        </p>
+                        <ul class="project-highlights">
+                            <li>Arquitectura de base de datos MySQL 8.0 con stored procedures, triggers y optimización de consultas críticas.</li>
+                            <li>Backend con PHP 8.3 + Laravel 10; frontend responsivo con HTML5, CSS3 y Bootstrap 5 (desktop, tablet y móvil).</li>
+                            <li>Implementación de seguridad OWASP: autenticación RBAC, encriptación bcrypt y protección contra SQL injection.</li>
+                            <li>Despliegue en Windows Server 2019, incluyendo pruebas, documentación técnica y capacitación de usuarios.</li>
+                            <li>Resultado: reducción de tiempos en aprobaciones, mayor trazabilidad y automatización de flujos de trabajo.</li>
+                        </ul>
+                        <div class="project-stack">
+                            <span class="stack-tag">PHP 8.3</span>
+                            <span class="stack-tag">Laravel 10</span>
+                            <span class="stack-tag">MySQL 8.0</span>
+                            <span class="stack-tag">Bootstrap 5</span>
+                            <span class="stack-tag">Composer</span>
+                            <span class="stack-tag">NPM</span>
+                            <span class="stack-tag">Windows Server 2019</span>
+                        </div>
+                        <a href="https://github.com/Dangebin12/LaMetaHn" target="_blank" class="project-link">🔗 github.com/Dangebin12/LaMetaHn</a>
+                    </div>
+
+                    <!-- Proyecto 02 -->
+                    <div class="project-item">
+                        <div class="project-number">02</div>
+                        <div class="project-header">
+                            <h4 class="project-title-main">BIBLIOTECA VIRTUAL INFOP 24/7</h4>
+                            <div class="project-meta">
+                                <span>INFOP, Tegucigalpa</span>
+                                <span>Oct 2024 – May 2025</span>
+                                <span>Líder de Implementación</span>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Sistema de gestión de biblioteca digital que unifica en una sola plataforma el acceso a colecciones digitales de todos los centros de datos del INFOP, facilitando la búsqueda y recuperación de información para alumnos, maestros y público en general.
+                        </p>
+                        <ul class="project-highlights">
+                            <li>Diseño e implementación de base de datos con SQL Server para almacenar y recuperar material educativo.</li>
+                            <li>Desarrollo frontend con HTML5 y Bootstrap para interfaces intuitivas y responsivas.</li>
+                            <li>Implementación del framework Laravel con NodeJs y Composer para APIs y módulos del sistema.</li>
+                            <li>Resultado: acceso gratuito, fácil y desde cualquier lugar del país a los servicios educativos de INFOP.</li>
+                        </ul>
+                        <div class="project-stack">
+                            <span class="stack-tag">Laravel</span>
+                            <span class="stack-tag">PHP</span>
+                            <span class="stack-tag">SQL Server</span>
+                            <span class="stack-tag">Bootstrap</span>
+                            <span class="stack-tag">Node.js</span>
+                            <span class="stack-tag">Composer</span>
+                        </div>
+                        <a href="https://github.com/StormyGit/biblioteca" target="_blank" class="project-link">🔗 github.com/StormyGit/biblioteca</a>
+                    </div>
+
+                    <!-- Proyecto 03 -->
+                    <div class="project-item">
+                        <div class="project-number">03</div>
+                        <div class="project-header">
+                            <h4 class="project-title-main">SISTEMA DE VENTA DE LOTES DE TERRENOS</h4>
+                            <div class="project-meta">
+                                <span>UNAH-CU, Tegucigalpa</span>
+                                <span>Ene – May 2024</span>
+                                <span>Desarrollador & Analista</span>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Sistema web para gestión y venta de lotes de terrenos, con módulos de inventario, clientes y transacciones.
+                        </p>
+                        <ul class="project-highlights">
+                            <li>Base de datos MySQL para almacenamiento y gestión de lotes, clientes y transacciones.</li>
+                            <li>Interfaces visuales con HTML5 y CSS; lógica de negocio con Laravel, NodeJs y JavaScript.</li>
+                            <li>Supervisión de todas las etapas: análisis, desarrollo, pruebas e implementación.</li>
+                        </ul>
+                        <div class="project-stack">
+                            <span class="stack-tag">MySQL</span>
+                            <span class="stack-tag">Laravel</span>
+                            <span class="stack-tag">JavaScript</span>
+                            <span class="stack-tag">HTML5</span>
+                            <span class="stack-tag">CSS</span>
+                            <span class="stack-tag">Node.js</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experiencia y Educación -->
+        <section class="content-section">
+            <div class="container">
+                <h2 class="section-title">Experiencia</h2>
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-year">2024 - Presente</div>
                         <h4>Desarrollador Full Stack</h4>
-                        <p style="color: var(--color-text-light); margin-top: 0.5rem;">
+                        <p>
                             Desarrollando aplicaciones web modernas con React, Node.js y bases de datos SQL/NoSQL.
                         </p>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-year">2023 - 2024</div>
                         <h4>Diseñador UI/UX</h4>
-                        <p style="color: var(--color-text-light); margin-top: 0.5rem;">
+                        <p>
                             Creación de interfaces de usuario intuitivas y sistemas de diseño escalables.
                         </p>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-year">2022 - 2023</div>
                         <h4>Desarrollador Frontend</h4>
-                        <p style="color: var(--color-text-light); margin-top: 0.5rem;">
+                        <p>
                             Implementación de diseños responsive y optimización de rendimiento web.
                         </p>
                     </div>
                 </div>
 
-                <h3 class="section-title" style="margin-top: 3rem;">Educación</h3>
+                <h2 class="section-title" style="margin-top: 4rem;">Educación</h2>
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-year">2020 - 2024</div>
                         <h4>Título en Desarrollo de Software</h4>
-                        <p style="color: var(--color-text-light); margin-top: 0.5rem;">
+                        <p>
                             Universidad / Institución
                         </p>
                     </div>
                 </div>
 
-                <div style="margin-top: 3rem; padding: 2rem; background: var(--color-card-hover); border-radius: 12px; text-align: center;">
-                    <h3 style="margin-bottom: 1rem;">¿Trabajemos juntos?</h3>
-                    <p style="color: var(--color-text-light); margin-bottom: 1.5rem;">
+                <div class="cta-section">
+                    <h3>¿Trabajemos juntos?</h3>
+                    <p>
                         Siempre estoy abierto a nuevos proyectos y oportunidades de colaboración.
                     </p>
-                    <a href="index.html#contact" style="display: inline-block; padding: 1rem 2rem; background: var(--color-accent); color: white; text-decoration: none; border-radius: 8px; transition: var(--transition);">
+                    <a href="index.html#contact" class="cta-button">
                         Contáctame
                     </a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
     <!-- Footer -->
     <footer class="footer">
