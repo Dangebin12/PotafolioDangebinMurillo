@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Venta de Terrenos - Proyecto de Dangebin Murillo">
+    <title>Venta de Terrenos - Dangebin Murillo</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .project-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 120px 0 80px;
+            color: white;
+            text-align: center;
+        }
+
+        .project-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .project-hero .tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .project-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .project-section {
+            margin-bottom: 60px;
+        }
+
+        .project-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+
+        .project-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .screenshot {
+            background: #f8f9fa;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot:hover {
+            transform: scale(1.02);
+        }
+
+        .screenshot img {
+            width: 100%;
+            height: auto;
+            display: block;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .screenshot img:hover {
+            opacity: 0.9;
+        }
+
+        .screenshot-caption {
+            padding: 20px;
+            background: white;
+        }
+
+        .screenshot-caption h4 {
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+
+        .screenshot-caption p {
+            font-size: 0.95rem;
+            color: #666;
+            margin: 0;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .tech-tag {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 40px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .back-button:hover {
+            color: #764ba2;
+        }
+
+        .back-button::before {
+            content: "← ";
+        }
+
+        .placeholder-image {
+            background: linear-gradient(135deg, #e0e7ff 0%, #f3e7ff 100%);
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #667eea;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* Modal/Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            animation: zoomIn 0.3s ease;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 10000;
+        }
+
+        .lightbox-close:hover {
+            color: #667eea;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">DM</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Trabajo</a></li>
+                <li><a href="about.html" class="nav-link">Acerca de</a></li>
+                <li><a href="#contact" class="nav-link">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero del Proyecto -->
+    <section class="project-hero">
+        <div class="container">
+            <div class="tag">INNOVA</div>
+            <h1>Venta de Terrenos</h1>
+            <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto; opacity: 0.95;">
+                Plataforma digital para la comercialización de terrenos y propiedades, 
+                con catálogo interactivo, búsqueda avanzada y gestión de clientes.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contenido del Proyecto -->
+    <div class="project-content">
+        <a href="index.html" class="back-button">Volver al portafolio</a>
+
+        <!-- Descripción General -->
+        <section class="project-section">
+            <h2>Descripción del Proyecto</h2>
+            <p>
+                El sistema de Venta de Terrenos es una plataforma web completa diseñada para facilitar 
+                la comercialización de propiedades inmobiliarias. Permite a los usuarios explorar un 
+                catálogo interactivo de terrenos disponibles, realizar búsquedas avanzadas según sus 
+                necesidades específicas, y gestionar todo el proceso de venta de manera digital y eficiente.
+            </p>
+            <p>
+                La plataforma incluye funcionalidades tanto para compradores como para administradores. 
+                Los administradores acceden mediante un sistema de autenticación seguro que protege la 
+                información sensible y permite gestionar el inventario, actualizar propiedades y administrar 
+                clientes potenciales, proporcionando una experiencia intuitiva y profesional en cada interacción.
+            </p>
+        </section>
+
+        <!-- Características Principales -->
+        <section class="project-section">
+            <h2>Características Principales</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>� Autenticación Segura</h3>
+                    <p>Sistema de inicio de sesión protegido con validación de credenciales para garantizar que solo usuarios autorizados accedan al panel administrativo.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>�📍 Catálogo Interactivo</h3>
+                    <p>Visualización de terrenos con mapas interactivos, imágenes, especificaciones detalladas y ubicación geográfica precisa.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🔍 Búsqueda Avanzada</h3>
+                    <p>Sistema de filtros inteligente que permite buscar terrenos por ubicación geográfica, rangos de área (m²), rangos de precios personalizables, tipo de terreno (residencial, comercial, agrícola) y servicios disponibles. Incluye ordenamiento dinámico y comparación de propiedades.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>👥 Gestión de Clientes</h3>
+                    <p>Administración completa de clientes potenciales, seguimiento de interesados y historial de interacciones.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📊 Panel de Administración</h3>
+                    <p>Dashboard completo para gestionar inventario, actualizar información de terrenos y monitorear estadísticas de ventas.</p>
+                </div>
+                <div class="feature-card">                    <h3>📊 Análisis Estadístico</h3>
+                    <p>Herramientas avanzadas de análisis que generan estadísticas en tiempo real sobre inventario, ventas mensuales, precios promedio por zona, distribución de terrenos por área, tendencias de mercado y métricas de rendimiento para toma de decisiones estratégicas.</p>
+                </div>
+                <div class="feature-card">                    <h3>� Reportes Detallados</h3>
+                    <p>Generación automática de reportes en PDF con información completa de terrenos, historial de transacciones y documentación legal para facilitar procesos administrativos.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>�📱 Diseño Responsivo</h3>
+                    <p>Interfaz adaptable que funciona perfectamente en dispositivos móviles, tablets y computadoras de escritorio.</p>
+                </div>
+                <div class="feature-card">                    <h3>📧 Gestión de Correos</h3>
+                    <p>Sistema de comunicación por email con envío automático de notificaciones, confirmaciones de consultas, boletines informativos, plantillas personalizables y seguimiento de correos para mantener contacto efectivo con clientes.</p>
+                </div>
+                <div class="feature-card">                    <h3>💬 Sistema de Consultas</h3>
+                    <p>Los usuarios pueden realizar consultas directas sobre propiedades de interés y recibir respuestas personalizadas.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Capturas de Pantalla -->
+        <section class="project-section">
+            <h2>Capturas de Pantalla</h2>
+            <div class="screenshots-grid">
+                <div class="screenshot">
+                    <img src="imagenes/Captura de pantalla 2026-02-23 143610 - copia.png" alt="Página de Inicio" />
+                    <div class="screenshot-caption">
+                        <h4>Página de Inicio</h4>
+                        <p>Página principal que presenta la visión y misión de la empresa, destacando el compromiso con la excelencia en bienes raíces. Incluye sección de terrenos destacados con búsqueda rápida, información institucional sobre nuestros valores y objetivos, y múltiples canales de contacto (teléfono, WhatsApp, correo electrónico y formulario directo) para facilitar la comunicación con clientes potenciales.</p>
+                    </div>
+                </div>
+                <div class="screenshot">
+                    <img src="imagenes/Captura de pantalla 2026-02-23 142700.png" alt="Vista de Terrenos por Áreas y Precios" />
+                    <div class="screenshot-caption">
+                        <h4>Vista de Terrenos por Áreas y Precios</h4>
+                        <p>Sistema de visualización avanzada que permite organizar y filtrar terrenos según su área en metros cuadrados y rangos de precios. Los usuarios pueden comparar propiedades lado a lado, ordenar por tamaño o costo, y aplicar múltiples filtros simultáneamente para encontrar la opción perfecta según su presupuesto y necesidades de espacio.</p>
+                    </div>
+                </div>
+                <div class="screenshot">
+                    <img src="imagenes/Captura de pantalla 2026-02-23 142857 - copia.png" alt="Reporte de Terrenos" />
+                    <div class="screenshot-caption">
+                        <h4>Reporte de Terrenos</h4>
+                        <p>Sistema de generación de reportes detallados que incluye información completa de cada terreno: ubicación exacta, dimensiones, precio, estado de disponibilidad, historial de transacciones y documentación asociada en formato PDF para facilitar la gestión administrativa.</p>
+                    </div>
+                </div>
+                <div class="screenshot">
+                    <img src="imagenes/Captura de pantalla 2026-02-23 143742 - copia.png" alt="Inicio de Sesión" />
+                    <div class="screenshot-caption">
+                        <h4>Inicio de Sesión</h4>
+                        <p>Sistema de autenticación seguro que permite a los administradores acceder al panel de control para gestionar el catálogo de terrenos y clientes.</p>
+                    </div>
+                </div>
+                <div class="screenshot">
+                    <img src="imagenes/Captura de pantalla 2026-02-23 142828 - copia.png" alt="Estadísticas de Terrenos" />
+                    <div class="screenshot-caption">
+                        <h4>Estadísticas de Terrenos</h4>
+                        <p>Panel de análisis integral que muestra estadísticas en tiempo real del inventario: total de terrenos disponibles, vendidos y en proceso, gráficos comparativos de ventas por mes, análisis de precios promedio por zona, distribución de terrenos por área, tendencias de demanda, y métricas de rendimiento comercial. Incluye gráficos interactivos y exportación de datos para análisis estratégicos.</p>
+                    </div>
+                </div>
+                <div class="screenshot">
+                    <img src="imagenes/Captura de pantalla 2026-02-23 143138 - copia.png" alt="Gestión de Correos" />
+                    <div class="screenshot-caption">
+                        <h4>Gestión de Correos Electrónicos</h4>
+                        <p>Sistema integrado de comunicación por correo electrónico que permite enviar notificaciones automáticas a clientes interesados, confirmaciones de consultas, actualizaciones de terrenos disponibles, boletines informativos y seguimiento personalizado. Incluye plantillas prediseñadas, programación de envíos, histórico de correos enviados, gestión de contactos y estadísticas de apertura para optimizar la comunicación con clientes potenciales.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tecnologías Utilizadas -->
+        <section class="project-section">
+            <h2>Tecnologías Utilizadas</h2>
+            <div class="tech-stack">
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">PHP</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">Bootstrap</span>
+                <span class="tech-tag">Google Maps API</span>
+                <span class="tech-tag">jQuery</span>
+            </div>
+        </section>
+
+        <!-- Resultados -->
+        <section class="project-section">
+            <h2>Resultados e Impacto</h2>
+            <p>
+                La implementación de esta plataforma ha transformado el proceso de comercialización 
+                de terrenos, proporcionando:
+            </p>
+            <ul style="font-size: 1.1rem; line-height: 1.8; color: #666;">
+                <li>Mayor alcance y visibilidad de las propiedades disponibles</li>
+                <li>Reducción del tiempo de gestión de consultas y seguimiento de clientes</li>
+                <li>Experiencia de usuario mejorada con información accesible 24/7</li>
+                <li>Proceso de venta más eficiente y transparente</li>
+                <li>Base de datos organizada de propiedades y clientes potenciales</li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <a href="mailto:tu@email.com" class="footer-link">Mensaje</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Encuéntrame en</h4>
+                    <ul class="social-links">
+                        <li><a href="https://github.com/tuusuario" target="_blank" class="footer-link">GitHub</a></li>
+                        <li><a href="https://www.linkedin.com/in/dangebin-murillo-411981306" target="_blank" class="footer-link">LinkedIn</a></li>
+                        <li><a href="https://twitter.com/tuusuario" target="_blank" class="footer-link">Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Dangebin Murillo</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" alt="Imagen ampliada">
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxClose = document.querySelector('.lightbox-close');
+        const screenshots = document.querySelectorAll('.screenshot img');
+
+        // Add click event to all screenshot images
+        screenshots.forEach(img => {
+            img.addEventListener('click', function() {
+                lightbox.classList.add('active');
+                lightboxImg.src = this.src;
+                lightboxImg.alt = this.alt;
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+        });
+
+        // Close lightbox when clicking the X
+        lightboxClose.addEventListener('click', closeLightbox);
+
+        // Close lightbox when clicking outside the image
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+    </script>
+</body>
+</html>
