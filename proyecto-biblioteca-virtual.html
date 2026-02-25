@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Biblioteca Virtual - Proyecto de Dangebin Murillo">
+    <title>Biblioteca Virtual - Dangebin Murillo</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .project-hero {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            padding: 120px 0 80px;
+            color: white;
+            text-align: center;
+        }
+
+        .project-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .project-hero .tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 12px 35px;
+            border-radius: 30px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .project-hero .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            display: block;
+        }
+
+        .hero-stat .stat-label {
+            font-size: 1rem;
+            opacity: 0.85;
+        }
+
+        .project-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .project-section {
+            margin-bottom: 60px;
+        }
+
+        .project-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+            border-left: 5px solid #11998e;
+            padding-left: 16px;
+        }
+
+        .project-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: #f4fdf8;
+            border: 1px solid #d1f5e0;
+            padding: 30px;
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(17,153,142,0.15);
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #11998e;
+        }
+
+        .feature-card p {
+            font-size: 0.98rem;
+            color: #555;
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 35px;
+            margin-top: 40px;
+        }
+
+        .screenshot {
+            background: #f8f9fa;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .screenshot:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .screenshot img {
+            width: 100%;
+            height: auto;
+            display: block;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .screenshot img:hover {
+            opacity: 0.9;
+        }
+
+        .screenshot-caption {
+            padding: 22px;
+            background: white;
+            border-top: 3px solid #11998e;
+        }
+
+        .screenshot-caption h4 {
+            margin-bottom: 8px;
+            color: #1a1a1a;
+            font-size: 1.1rem;
+        }
+
+        .screenshot-caption p {
+            font-size: 0.92rem;
+            color: #666;
+            margin: 0;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .tech-tag {
+            background: #11998e;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 40px;
+            color: #11998e;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .back-button:hover {
+            color: #38ef7d;
+        }
+
+        .back-button::before {
+            content: "← ";
+        }
+
+        .impact-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .impact-list li {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #555;
+            padding: 10px 14px;
+            margin-bottom: 10px;
+            background: #f4fdf8;
+            border-left: 4px solid #38ef7d;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .impact-list li::before {
+            content: "✓ ";
+            color: #11998e;
+            font-weight: 700;
+        }
+
+        /* Modal/Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-content {
+            max-width: 92%;
+            max-height: 92%;
+            object-fit: contain;
+            animation: zoomIn 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            color: white;
+            font-size: 42px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 10000;
+        }
+
+        .lightbox-close:hover {
+            color: #38ef7d;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .project-hero h1 { font-size: 2rem; }
+            .hero-stat .stat-number { font-size: 1.8rem; }
+            .screenshots-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">DM</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Trabajo</a></li>
+                <li><a href="about.html" class="nav-link">Acerca de</a></li>
+                <li><a href="#contact" class="nav-link">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero del Proyecto -->
+    <section class="project-hero">
+        <div class="container">
+            <div class="tag">WEB APP</div>
+            <h1>Biblioteca Virtual INFOP 24/7</h1>
+            <div style="background: white; display: inline-flex; justify-content: center; align-items: center; margin: 24px auto 10px; padding: 16px 40px; border-radius: 14px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+                <img src="imagenes/infop/Logo.webp" alt="Logo INFOP" style="max-width: 180px; height: auto; border-radius: 8px;">
+            </div>
+            <p style="font-size: 1.2rem; max-width: 850px; margin: 0 auto; opacity: 0.95; line-height: 1.8;">
+                Plataforma digital institucional diseñada para dar acceso a más de 16,000 usuarios 
+                a recursos educativos digitales — libros, PDFs, videos y material didáctico — 
+                desde cualquier lugar del país y el exterior.
+            </p>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="stat-number">16,000+</span>
+                    <span class="stat-label">Usuarios Registrados</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="stat-number">Nacional</span>
+                    <span class="stat-label">Cobertura</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Acceso en Línea</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="stat-number">Multi-rol</span>
+                    <span class="stat-label">Sistema de Seguridad</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenido del Proyecto -->
+    <div class="project-content">
+        <a href="index.html" class="back-button">Volver al portafolio</a>
+
+        <!-- Descripción General -->
+        <section class="project-section">
+            <h2>Descripción del Proyecto</h2>
+            <p>
+                La <strong>Biblioteca Virtual Institucional</strong> es un sistema web completo desarrollado para centralizar 
+                y democratizar el acceso al conocimiento en una institución con presencia nacional. La plataforma atiende 
+                a más de <strong>16,000 usuarios</strong> entre estudiantes, docentes y personal administrativo, permitiéndoles 
+                acceder a recursos educativos como libros digitales en PDF, videos formativos y material didáctico 
+                organizado por áreas temáticas, sin importar su ubicación geográfica.
+            </p>
+            <p>
+                El sistema va mucho más allá de una simple biblioteca en línea. Integra la gestión de los 
+                <strong>centros regionales</strong> de la institución, el control de proveedores de libros, el préstamo 
+                físico de libros y computadoras, la publicación de anuncios y eventos institucionales, la transmisión 
+                de videos de cursos y formación, y un robusto módulo de respaldo y seguridad de datos con control 
+                de acceso por roles.
+            </p>
+            <p>
+                La plataforma fue diseñada pensando en la escala institucional: múltiples sedes regionales a nivel 
+                nacional, usuarios dentro y fuera del país, y administradores con distintos niveles de permisos, 
+                garantizando siempre la integridad y disponibilidad de la información.
+            </p>
+        </section>
+
+        <!-- Características Principales -->
+        <section class="project-section">
+            <h2>Características Principales</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>📚 Biblioteca Digital (PDF)</h3>
+                    <p>Acceso a un catálogo completo de libros y documentos en formato digital PDF. Los usuarios navegan por categorías, realizan búsquedas avanzadas y visualizan o descargan el material directamente desde el sistema.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🎥 Videoteca por Áreas</h3>
+                    <p>Repositorio de videos educativos organizados por áreas temáticas y cursos. Los usuarios acceden a contenidos audiovisuales de formación institucional, cursos técnicos y material de capacitación clasificado por carpetas.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📖 Préstamo Físico de Libros</h3>
+                    <p>Módulo completo para gestionar el préstamo y devolución de libros físicos. Registra al solicitante, fechas de préstamo y devolución, estado del libro y genera alertas por vencimiento.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>💻 Préstamo de Computadoras</h3>
+                    <p>Control del préstamo de equipos informáticos disponibles en la biblioteca. Registra usuario, tiempo de uso, estado del equipo y disponibilidad en tiempo real.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🏢 Gestión de Centros Regionales</h3>
+                    <p>Administración centralizada de todos los centros regionales de la institución a nivel nacional. Permite gestionar información, contactos, recursos disponibles y asignación de materiales por sede.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🚚 Información de Proveedores</h3>
+                    <p>Directorio y gestión de proveedores de libros y materiales bibliográficos. Incluye datos de contacto, historial de adquisiciones, catálogos disponibles y estado de pedidos.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📍 Ubicación Física de Libros</h3>
+                    <p>Sistema de localización física del material bibliográfico dentro de la biblioteca: estante, sección, clasificación y disponibilidad. Facilita la búsqueda y ordenamiento del inventario físico.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📋 Revisión de Material Didáctico</h3>
+                    <p>Módulo para la revisión, aprobación y catalogación de material didáctico antes de su publicación. Incluye flujo de validación por parte de bibliotecarios y coordinadores académicos.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📢 Anuncios Institucionales</h3>
+                    <p>Área de publicación de anuncios escritos y fotográficos de la institución y sus bibliotecas. Permite gestionar eventos, noticias, comunicados y convocatorias con soporte para imágenes.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🎓 Videos de Cursos y Formación</h3>
+                    <p>Sección dedicada a la visualización de videos institucionales sobre cursos, talleres y programas de formación. Organizados por categoría, área de conocimiento y centro regional.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>💾 Respaldo de Base de Datos</h3>
+                    <p>Sistema automatizado de respaldo de la base de datos del sistema. Permite generar, descargar y gestionar copias de seguridad para garantizar la continuidad y recuperación de la información institucional.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🔐 Seguridad por Roles</h3>
+                    <p>Control de acceso granular mediante sistema de roles y permisos. Diferentes niveles de usuario (administrador, bibliotecario, docente, estudiante) con acceso restringido a módulos según su perfil.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Capturas de Pantalla -->
+        <section class="project-section">
+            <h2>Capturas de Pantalla del Sistema</h2>
+            <div class="screenshots-grid">
+
+                <div class="screenshot">
+                    <img src="imagenes/infop/Captura de pantalla 2026-02-25 000317.png" alt="Página Principal del Sistema" />
+                    <div class="screenshot-caption">
+                        <h4>Página Principal del Sistema</h4>
+                        <p>Portal de bienvenida de la Biblioteca Virtual Institucional. Presenta el acceso al catálogo de recursos digitales, los módulos disponibles y la navegación general del sistema. Diseñada para guiar a los más de 16,000 usuarios registrados hacia los recursos que necesitan, con accesos rápidos a PDFs, videos, anuncios y préstamos.</p>
+                    </div>
+                </div>
+
+                <div class="screenshot">
+                    <img src="imagenes/infop/Captura de pantalla 2026-02-25 000334.png" alt="Login del Sistema" />
+                    <div class="screenshot-caption">
+                        <h4>Inicio de Sesión</h4>
+                        <p>Pantalla de autenticación segura del sistema. Permite el acceso al personal autorizado mediante credenciales únicas. El sistema valida el rol del usuario al momento del login y redirige al panel correspondiente según su nivel de permisos — administrador, bibliotecario, docente o estudiante — garantizando el acceso únicamente a los módulos habilitados para su perfil.</p>
+                    </div>
+                </div>
+
+                <div class="screenshot">
+                    <img src="imagenes/infop/Captura de pantalla 2026-02-25 000400.png" alt="Dashboard del Sistema" />
+                    <div class="screenshot-caption">
+                        <h4>Dashboard Principal</h4>
+                        <p>Panel de control central del sistema con indicadores en tiempo real: total de libros registrados, préstamos activos, usuarios conectados, materiales recién ingresados y accesos directos a todos los módulos del sistema. Proporciona al administrador una vista completa del estado operativo de la biblioteca con estadísticas clave para la toma de decisiones.</p>
+                    </div>
+                </div>
+
+                <div class="screenshot">
+                    <img src="imagenes/infop/Captura de pantalla 2026-02-25 000418.png" alt="Áreas de Carpetas de Videos" />
+                    <div class="screenshot-caption">
+                        <h4>Videoteca por Áreas Temáticas</h4>
+                        <p>Módulo de organización y acceso a videos educativos distribuidos en carpetas por área de conocimiento. Cada carpeta agrupa los recursos audiovisuales correspondientes a un área o programa formativo, facilitando la navegación. Los usuarios pueden buscar videos por título, área o curso, y acceder al contenido en línea sin necesidad de descargarlo.</p>
+                    </div>
+                </div>
+
+                <div class="screenshot">
+                    <img src="imagenes/infop/Captura de pantalla 2026-02-25 000439.png" alt="Préstamo de Libros Físicos" />
+                    <div class="screenshot-caption">
+                        <h4>Préstamo de Libros Físicos</h4>
+                        <p>Sistema de gestión de préstamos del inventario bibliográfico físico. Registra el nombre del solicitante, número de identificación, título del libro, código de clasificación, fecha de préstamo y fecha límite de devolución. Genera alertas automáticas por vencimientos y lleva el historial completo de cada libro, permitiendo un control preciso del inventario en circulación.</p>
+                    </div>
+                </div>
+
+                <div class="screenshot">
+                    <img src="imagenes/infop/Captura de pantalla 2026-02-25 000503.png" alt="Material de Libros en Físico o Digital" />
+                    <div class="screenshot-caption">
+                        <h4>Catálogo de Material Bibliográfico (Físico y Digital)</h4>
+                        <p>Módulo de gestión del inventario bibliográfico que integra tanto los libros físicos disponibles en estantes como los recursos digitales en PDF. Cada registro contiene título, autor, ISBN, año de publicación, área temática, ubicación física en la biblioteca (estante/sección), cantidad de ejemplares y enlace de acceso digital cuando aplica. Permite búsquedas avanzadas por múltiples criterios.</p>
+                    </div>
+                </div>
+
+                <div class="screenshot">
+                    <img src="imagenes/infop/Captura de pantalla 2026-02-25 000524.png" alt="Gestión de Proveedores de Libros" />
+                    <div class="screenshot-caption">
+                        <h4>Gestión de Proveedores</h4>
+                        <p>Directorio completo de proveedores de material bibliográfico con información detallada: nombre de la empresa, representante, teléfonos, correo electrónico, dirección, condiciones comerciales e historial de pedidos y adquisiciones realizadas. Permite registrar nuevos proveedores, actualizar sus datos y consultar el catálogo de materiales ofertados para facilitar las compras y donaciones de material bibliográfico.</p>
+                    </div>
+                </div>
+
+                <div class="screenshot">
+                    <img src="imagenes/infop/Captura de pantalla 2026-02-25 000610.png" alt="Anuncios Escritos o Fotográficos" />
+                    <div class="screenshot-caption">
+                        <h4>Anuncios Institucionales</h4>
+                        <p>Módulo de publicación y gestión de anuncios de la institución y sus bibliotecas regionales. Permite crear, editar y eliminar anuncios con soporte para texto enriquecido e imágenes fotográficas. Los anuncios pueden ser de tipo general, por sede regional o por área temática. Incluye programación de publicación y vencimiento automático para mantener la información siempre actualizada.</p>
+                    </div>
+                </div>
+
+                <div class="screenshot">
+                    <img src="imagenes/infop/Captura de pantalla 2026-02-25 000701.png" alt="Centros Regionales" />
+                    <div class="screenshot-caption">
+                        <h4>Gestión de Centros Regionales</h4>
+                        <p>Panel de administración de todos los centros regionales de la institución distribuidos a nivel nacional. Cada centro tiene su propio perfil con información de contacto, personal bibliotecario, inventario de recursos disponibles, horarios de atención y zona geográfica de cobertura. Permite la gestión descentralizada con visibilidad centralizada para la coordinación nacional.</p>
+                    </div>
+                </div>
+
+                <div class="screenshot">
+                    <img src="imagenes/infop/Captura de pantalla 2026-02-25 000729.png" alt="Respaldo de Base de Datos" />
+                    <div class="screenshot-caption">
+                        <h4>Respaldo de Base de Datos</h4>
+                        <p>Módulo de seguridad para la generación y gestión de copias de seguridad de la base de datos del sistema. Permite crear respaldos manuales en cualquier momento, programar respaldos automáticos, descargar los archivos generados y consultar el historial de backups realizados. Garantiza la continuidad del servicio y la recuperación de la información en caso de fallos o pérdida de datos.</p>
+                    </div>
+                </div>
+
+                <div class="screenshot">
+                    <img src="imagenes/infop/Captura de pantalla 2026-02-25 000927.png" alt="Seguridad por Roles" />
+                    <div class="screenshot-caption">
+                        <h4>Control de Seguridad por Roles</h4>
+                        <p>Sistema de gestión de roles y permisos que define el nivel de acceso de cada tipo de usuario dentro de la plataforma. Los roles configurables incluyen: Administrador General (acceso total), Bibliotecario (gestión de préstamos y catálogo), Docente (acceso a recursos y publicaciones) y Estudiante (consulta y solicitud de materiales). Cada rol tiene módulos habilitados e inhabilitados de forma granular para garantizar la seguridad de la información.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Tecnologías Utilizadas -->
+        <section class="project-section">
+            <h2>Tecnologías Utilizadas</h2>
+            <div class="tech-stack">
+                <span class="tech-tag">PHP</span>
+                <span class="tech-tag">Laravel</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">HTML5</span>
+                <span class="tech-tag">CSS3</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Bootstrap</span>
+                <span class="tech-tag">jQuery</span>
+                <span class="tech-tag">Blade Templates</span>
+                <span class="tech-tag">PDF Viewer</span>
+                <span class="tech-tag">Video Streaming</span>
+            </div>
+        </section>
+
+        <!-- Resultados e Impacto -->
+        <section class="project-section">
+            <h2>Resultados e Impacto</h2>
+            <p>
+                La implementación de la Biblioteca Virtual ha transformado el acceso al conocimiento 
+                dentro de la institución, logrando resultados significativos:
+            </p>
+            <ul class="impact-list">
+                <li>Más de 16,000 usuarios con acceso centralizado a recursos educativos digitales desde cualquier dispositivo</li>
+                <li>Reducción del tiempo de búsqueda de material bibliográfico físico y digital gracias al catálogo unificado</li>
+                <li>Cobertura nacional e internacional: usuarios acceden al sistema desde múltiples regiones del país y el exterior</li>
+                <li>Digitalización y preservación del acervo bibliográfico institucional en formato PDF</li>
+                <li>Control eficiente del préstamo físico de libros y computadoras con trazabilidad completa</li>
+                <li>Gestión centralizada de todos los centros regionales desde una única plataforma</li>
+                <li>Canal de comunicación institucional activo a través del módulo de anuncios y videos</li>
+                <li>Alta disponibilidad de la información con sistema de respaldo automatizado de base de datos</li>
+                <li>Seguridad de acceso garantizada mediante control de roles con permisos granulares</li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <a href="mailto:tu@email.com" class="footer-link">Mensaje</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Encuéntrame en</h4>
+                    <ul class="social-links">
+                        <li><a href="https://github.com/tuusuario" target="_blank" class="footer-link">GitHub</a></li>
+                        <li><a href="https://www.linkedin.com/in/dangebin-murillo-411981306" target="_blank" class="footer-link">LinkedIn</a></li>
+                        <li><a href="https://twitter.com/tuusuario" target="_blank" class="footer-link">Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Dangebin Murillo</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" alt="Imagen ampliada">
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxClose = document.querySelector('.lightbox-close');
+        const screenshots = document.querySelectorAll('.screenshot img');
+
+        screenshots.forEach(img => {
+            img.addEventListener('click', function() {
+                lightbox.classList.add('active');
+                lightboxImg.src = this.src;
+                lightboxImg.alt = this.alt;
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        lightboxClose.addEventListener('click', closeLightbox);
+
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    </script>
+</body>
+</html>
