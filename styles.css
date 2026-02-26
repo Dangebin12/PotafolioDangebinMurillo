@@ -150,6 +150,7 @@ body {
     color: var(--color-text-light);
     max-width: 600px;
     line-height: 1.8;
+    text-align: justify;
 }
 
 /* Secciones */
@@ -172,6 +173,7 @@ body {
     color: var(--color-text-light);
     margin-bottom: 3rem;
     font-size: 1.1rem;
+    text-align: justify;
 }
 
 /* Grid de Proyectos */
@@ -217,6 +219,7 @@ body {
 .project-description {
     color: var(--color-text-light);
     line-height: 1.6;
+    text-align: justify;
 }
 
 /* En Progreso */
