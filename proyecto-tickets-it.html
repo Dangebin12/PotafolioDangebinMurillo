@@ -1022,45 +1022,48 @@
     <script src="script.js"></script>
 
     <!-- Lightbox -->
-    <div id="lb-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;cursor:zoom-out;align-items:center;justify-content:center;padding:24px;box-sizing:border-box;">
-        <button id="lb-close" style="position:fixed;top:18px;right:24px;background:none;border:none;color:white;font-size:2.2rem;cursor:pointer;line-height:1;opacity:.85;">&times;</button>
-        <img id="lb-img" src="" alt="" style="max-width:100%;max-height:100%;border-radius:10px;box-shadow:0 8px 48px rgba(0,0,0,.7);object-fit:contain;transform:scale(0.92);transition:transform .25s ease;">
+    <div id="lb-overlay" onclick="closeLb()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9999;align-items:center;justify-content:center;padding:24px;box-sizing:border-box;opacity:0;transition:opacity .25s ease;">
+        <button onclick="event.stopPropagation();closeLb()" style="position:fixed;top:16px;right:22px;background:rgba(255,255,255,0.12);border:none;color:white;font-size:1.8rem;cursor:pointer;width:40px;height:40px;border-radius:50%;line-height:1;display:flex;align-items:center;justify-content:center;">&times;</button>
+        <img id="lb-img" src="" alt="" onclick="event.stopPropagation()" style="max-width:95vw;max-height:90vh;border-radius:10px;box-shadow:0 8px 48px rgba(0,0,0,.8);object-fit:contain;transform:scale(0.9);transition:transform .28s cubic-bezier(.4,0,.2,1);cursor:default;">
     </div>
 
     <style>
-        .mockup-body img { cursor: zoom-in; transition: opacity .2s; }
-        .mockup-body img:hover { opacity: .88; }
-        #lb-overlay.lb-open { display:flex !important; }
-        #lb-overlay.lb-open #lb-img { transform:scale(1); }
+        .mockup-body img { cursor: zoom-in; transition: opacity .2s, transform .2s; display:block; }
+        .mockup-body img:hover { opacity: .85; transform: scale(1.01); }
     </style>
 
     <script>
-        (function(){
-            var overlay = document.getElementById('lb-overlay');
-            var lbImg   = document.getElementById('lb-img');
-            var lbClose = document.getElementById('lb-close');
+        var _lbOverlay = document.getElementById('lb-overlay');
+        var _lbImg     = document.getElementById('lb-img');
 
-            document.querySelectorAll('.mockup-body img').forEach(function(img){
-                img.addEventListener('click', function(e){
-                    e.stopPropagation();
-                    lbImg.src = img.src;
-                    lbImg.alt = img.alt;
-                    overlay.classList.add('lb-open');
-                    document.body.style.overflow = 'hidden';
-                });
+        document.querySelectorAll('.mockup-body img').forEach(function(img){
+            img.style.cursor = 'zoom-in';
+            img.addEventListener('click', function(e){
+                e.stopPropagation();
+                _lbImg.src = img.src;
+                _lbImg.alt = img.alt;
+                _lbImg.style.transform = 'scale(0.9)';
+                _lbOverlay.style.display = 'flex';
+                _lbOverlay.offsetHeight; /* force reflow */
+                _lbOverlay.style.opacity = '1';
+                _lbImg.style.transform = 'scale(1)';
+                document.body.style.overflow = 'hidden';
             });
+        });
 
-            function closeLb(){
-                overlay.classList.remove('lb-open');
-                setTimeout(function(){ overlay.style.display = ''; overlay.classList.remove('lb-open'); }, 10);
-                document.body.style.overflow = '';
-                lbImg.src = '';
-            }
+        function closeLb(){
+            _lbOverlay.style.opacity = '0';
+            _lbImg.style.transform   = 'scale(0.9)';
+            document.body.style.overflow = '';
+            setTimeout(function(){
+                _lbOverlay.style.display = 'none';
+                _lbImg.src = '';
+            }, 270);
+        }
 
-            overlay.addEventListener('click', closeLb);
-            lbClose.addEventListener('click', function(e){ e.stopPropagation(); closeLb(); });
-            document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLb(); });
-        })();
+        document.addEventListener('keydown', function(e){
+            if (e.key === 'Escape') closeLb();
+        });
     </script>
 </body>
 </html>
