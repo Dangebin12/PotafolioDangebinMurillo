@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sistema de Tickets IT - Proyecto de Dangebin Murillo">
+    <title>Sistema de Tickets IT - Dangebin Murillo</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ── Hero ── */
+        .project-hero {
+            background: linear-gradient(135deg, #1e1b4b 0%, #4f46e5 55%, #7c3aed 100%);
+            padding: 120px 0 80px;
+            color: white;
+            text-align: center;
+        }
+        .project-hero h1 { font-size: 2.8rem; margin-bottom: 1rem; font-weight: 700; }
+        .project-hero .tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.18);
+            padding: 10px 32px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+        .project-hero p {
+            font-size: 1.1rem;
+            max-width: 840px;
+            margin: 0 auto;
+            opacity: 0.93;
+            line-height: 1.8;
+        }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 48px;
+            flex-wrap: wrap;
+        }
+        .hero-stat { text-align: center; }
+        .hero-stat .stat-number { font-size: 2.4rem; font-weight: 800; display: block; }
+        .hero-stat .stat-label  { font-size: 0.95rem; opacity: 0.85; }
+
+        /* ── Layout ── */
+        .project-content { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+        .project-section  { margin-bottom: 70px; }
+        .project-section h2 {
+            font-size: 1.9rem;
+            margin-bottom: 1.4rem;
+            color: #1a1a1a;
+            border-left: 5px solid #4f46e5;
+            padding-left: 16px;
+        }
+        .project-section p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        /* ── Features grid ── */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 24px;
+            margin-top: 36px;
+        }
+        .feature-card {
+            background: #eef2ff;
+            border: 1px solid #c7d2fe;
+            padding: 26px;
+            border-radius: 14px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 28px rgba(79,70,229,0.18);
+        }
+        .feature-card .feature-icon { font-size: 2rem; margin-bottom: 12px; display: block; }
+        .feature-card h3 { font-size: 1.08rem; margin-bottom: 0.8rem; color: #1e1b4b; }
+        .feature-card p  { font-size: 0.95rem; color: #555; line-height: 1.7; text-align: justify; }
+
+        /* ── Flujo de correos ── */
+        .flow-section {
+            background: linear-gradient(135deg, #eef2ff 0%, #f5f3ff 100%);
+            border-radius: 18px;
+            padding: 40px;
+            margin-top: 32px;
+        }
+        .flow-steps {
+            display: flex;
+            align-items: flex-start;
+            gap: 0;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+        .flow-step {
+            flex: 1;
+            min-width: 140px;
+            text-align: center;
+            position: relative;
+        }
+        .flow-step:not(:last-child)::after {
+            content: '→';
+            position: absolute;
+            right: -14px;
+            top: 26px;
+            font-size: 1.4rem;
+            color: #4f46e5;
+            font-weight: 700;
+        }
+        .flow-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #4f46e5;
+            color: white;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+        }
+        .flow-step h4 { font-size: 0.88rem; color: #1e1b4b; margin-bottom: 5px; }
+        .flow-step p  { font-size: 0.78rem; color: #6b7280; line-height: 1.5; }
+
+        /* ── Roles ── */
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 22px;
+            margin-top: 32px;
+        }
+        .role-card {
+            background: white;
+            border: 2px solid #c7d2fe;
+            border-radius: 14px;
+            padding: 26px;
+            text-align: center;
+        }
+        .role-card .role-icon { font-size: 2.6rem; margin-bottom: 12px; display: block; }
+        .role-card h3 { font-size: 1.1rem; color: #1e1b4b; margin-bottom: 10px; }
+        .role-card ul { list-style: none; padding: 0; text-align: left; }
+        .role-card ul li {
+            font-size: 0.9rem;
+            color: #555;
+            padding: 5px 0;
+            border-bottom: 1px solid #e0e7ff;
+        }
+        .role-card ul li::before { content: "› "; color: #4f46e5; font-weight: 700; }
+
+        /* ── Video area ── */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+        .video-card {
+            background: white;
+            border: 1px solid #c7d2fe;
+            border-radius: 14px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .video-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(79,70,229,0.15);
+        }
+        .video-thumbnail {
+            background: linear-gradient(135deg, #1e1b4b 0%, #4f46e5 100%);
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 8px;
+            color: white;
+            position: relative;
+        }
+        .video-thumbnail .play-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+        .video-thumbnail .vid-duration {
+            position: absolute;
+            bottom: 8px;
+            right: 10px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .video-card-body { padding: 16px; }
+        .video-card-body .vid-tag {
+            display: inline-block;
+            background: #eef2ff;
+            color: #4f46e5;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+        .video-card-body h4 { font-size: 0.97rem; color: #1e1b4b; margin-bottom: 5px; }
+        .video-card-body p  { font-size: 0.85rem; color: #6b7280; line-height: 1.5; }
+
+        /* ── Categorías ── */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-top: 28px;
+        }
+        .category-chip {
+            background: white;
+            border: 2px solid #c7d2fe;
+            border-radius: 12px;
+            padding: 18px 16px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .category-chip:hover {
+            background: #4f46e5;
+            border-color: #4f46e5;
+            color: white;
+            transform: translateY(-3px);
+        }
+        .category-chip:hover .cat-icon { filter: grayscale(0) brightness(10); }
+        .cat-icon { font-size: 1.6rem; display: block; margin-bottom: 8px; }
+        .cat-name { font-size: 0.88rem; font-weight: 600; color: #1e1b4b; }
+        .category-chip:hover .cat-name { color: white; }
+        .cat-count { font-size: 0.75rem; color: #6b7280; margin-top: 3px; }
+        .category-chip:hover .cat-count { color: rgba(255,255,255,0.8); }
+
+        /* ── Tech stack ── */
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+        .tech-tag {
+            background: #1e1b4b;
+            color: white;
+            padding: 9px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.88rem;
+        }
+
+        /* ── Impact list ── */
+        .impact-list { list-style: none; padding: 0; }
+        .impact-list li {
+            font-size: 1.03rem;
+            line-height: 1.8;
+            color: #444;
+            padding: 10px 14px;
+            margin-bottom: 10px;
+            background: #eef2ff;
+            border-left: 4px solid #4f46e5;
+            border-radius: 0 8px 8px 0;
+        }
+        .impact-list li::before { content: "✓ "; color: #4f46e5; font-weight: 700; }
+
+        /* ── Back button ── */
+        .back-button {
+            display: inline-block;
+            margin-bottom: 40px;
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .back-button:hover { color: #1e1b4b; }
+        .back-button::before { content: "← "; }
+
+        /* ══════════════════════════════════════════
+           MOCKUPS CSS
+        ══════════════════════════════════════════ */
+        .mockups-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 36px;
+            margin-top: 40px;
+        }
+        .mockup-window {
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 6px 28px rgba(30,27,75,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .mockup-window:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 36px rgba(30,27,75,0.3);
+        }
+        .mockup-titlebar {
+            background: #1e1b4b;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .dot { width: 11px; height: 11px; border-radius: 50%; }
+        .dot-r { background: #f87171; }
+        .dot-y { background: #fbbf24; }
+        .dot-g { background: #34d399; }
+        .mockup-titlebar span { color: rgba(255,255,255,0.75); font-size: 0.78rem; margin-left: 10px; }
+        .mockup-body { background: #f5f3ff; padding: 0; }
+
+        .mockup-app { display: flex; min-height: 290px; }
+        .mockup-sidebar {
+            background: #1e1b4b;
+            width: 140px;
+            flex-shrink: 0;
+            padding: 16px 0;
+        }
+        .mockup-sidebar-header {
+            padding: 6px 16px 12px;
+            font-size: 0.62rem;
+            color: rgba(255,255,255,0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .mockup-sidebar-item {
+            padding: 9px 14px;
+            font-size: 0.68rem;
+            color: rgba(255,255,255,0.6);
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .mockup-sidebar-item.active,
+        .mockup-sidebar-item:hover {
+            background: rgba(99,102,241,0.4);
+            color: white;
+        }
+        .mockup-main { flex: 1; padding: 14px; background: #f5f3ff; overflow: hidden; }
+        .mockup-main-title { font-size: 0.8rem; font-weight: 700; color: #1e1b4b; margin-bottom: 10px; }
+
+        /* KPI row */
+        .kpi-row { display: flex; gap: 7px; margin-bottom: 12px; flex-wrap: wrap; }
+        .kpi-box {
+            flex: 1;
+            background: white;
+            border: 1px solid #c7d2fe;
+            border-radius: 8px;
+            padding: 9px 6px;
+            text-align: center;
+            min-width: 50px;
+        }
+        .kpi-box .kpi-val { font-size: 1.2rem; font-weight: 800; color: #4f46e5; display: block; }
+        .kpi-box .kpi-lbl { font-size: 0.58rem; color: #6b7280; }
+
+        /* Mock table */
+        .mock-table { width: 100%; border-collapse: collapse; font-size: 0.65rem; }
+        .mock-table th {
+            background: #4f46e5;
+            color: white;
+            padding: 6px 7px;
+            text-align: left;
+            font-weight: 600;
+        }
+        .mock-table td {
+            padding: 5px 7px;
+            border-bottom: 1px solid #e0e7ff;
+            color: #374151;
+            vertical-align: middle;
+        }
+        .mock-table tr:nth-child(even) td { background: #eef2ff; }
+
+        .mock-badge {
+            display: inline-block;
+            padding: 2px 7px;
+            border-radius: 10px;
+            font-size: 0.6rem;
+            font-weight: 600;
+        }
+        .badge-purple { background: #ede9fe; color: #5b21b6; }
+        .badge-blue   { background: #dbeafe; color: #1e40af; }
+        .badge-yellow { background: #fef3c7; color: #92400e; }
+        .badge-red    { background: #fee2e2; color: #991b1b; }
+        .badge-green  { background: #d1fae5; color: #065f46; }
+        .badge-gray   { background: #f3f4f6; color: #374151; }
+
+        /* Priority dot */
+        .prio-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 4px; }
+        .prio-high   { background: #ef4444; }
+        .prio-medium { background: #f59e0b; }
+        .prio-low    { background: #10b981; }
+
+        /* Avatar */
+        .mock-avatar {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6rem;
+            font-weight: 700;
+            color: white;
+            margin-right: 4px;
+        }
+
+        /* Email notification mockup */
+        .mock-email {
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #c7d2fe;
+            padding: 10px 12px;
+            margin-bottom: 7px;
+        }
+        .mock-email .email-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .mock-email .email-from { font-size: 0.62rem; font-weight: 700; color: #1e1b4b; }
+        .mock-email .email-time { font-size: 0.58rem; color: #9ca3af; }
+        .mock-email .email-subject { font-size: 0.67rem; font-weight: 600; color: #374151; margin-bottom: 3px; }
+        .mock-email .email-body { font-size: 0.6rem; color: #6b7280; line-height: 1.5; }
+        .mock-email .email-tag {
+            display: inline-block;
+            background: #ede9fe;
+            color: #5b21b6;
+            font-size: 0.58rem;
+            padding: 1px 6px;
+            border-radius: 8px;
+            margin-top: 4px;
+        }
+        .unread { border-left: 3px solid #4f46e5; }
+
+        /* Equipo card */
+        .mock-equipo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+        .mock-equipo-item {
+            background: white;
+            border: 1px solid #c7d2fe;
+            border-radius: 7px;
+            padding: 7px 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .mock-equipo-icon { font-size: 1.1rem; }
+        .mock-equipo-info .eq-name { font-size: 0.62rem; font-weight: 700; color: #1e1b4b; }
+        .mock-equipo-info .eq-model { font-size: 0.58rem; color: #6b7280; }
+        .mock-equipo-info .eq-user  { font-size: 0.58rem; color: #4f46e5; }
+
+        /* Tecnico card */
+        .mock-tech-list { display: flex; flex-direction: column; gap: 6px; }
+        .mock-tech-item {
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #c7d2fe;
+            padding: 8px 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tech-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: white;
+            flex-shrink: 0;
+        }
+        .mock-tech-info .t-name  { font-size: 0.65rem; font-weight: 700; color: #1e1b4b; }
+        .mock-tech-info .t-spec  { font-size: 0.6rem; color: #6b7280; }
+        .mock-tech-badges { margin-left: auto; text-align: right; }
+        .t-load { font-size: 0.58rem; color: #6b7280; }
+        .t-open { font-size: 0.62rem; font-weight: 700; color: #4f46e5; }
+
+        /* Video mockup */
+        .mock-video-list { display: flex; flex-direction: column; gap: 6px; }
+        .mock-video-row {
+            background: white;
+            border-radius: 7px;
+            border: 1px solid #c7d2fe;
+            padding: 7px 9px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .mock-video-thumb {
+            width: 42px;
+            height: 30px;
+            border-radius: 4px;
+            background: linear-gradient(135deg, #1e1b4b, #4f46e5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+        .mock-video-info .v-title { font-size: 0.63rem; font-weight: 600; color: #1e1b4b; }
+        .mock-video-info .v-dur   { font-size: 0.58rem; color: #6b7280; }
+
+        /* Chart */
+        .mock-chart { display: flex; align-items: flex-end; gap: 5px; height: 70px; padding: 0 2px; }
+        .mock-bar { flex: 1; border-radius: 4px 4px 0 0; position: relative; }
+        .mock-bar-lbl {
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.52rem;
+            color: #6b7280;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegación -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">DM</a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">Trabajo</a></li>
+                <li><a href="about.html" class="nav-link">Acerca de</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="project-hero">
+        <div class="container">
+            <div class="tag">IT SUPPORT</div>
+            <h1>Sistema de Tickets IT</h1>
+            <p>
+                Plataforma de helpdesk interna para la gestión integral de incidencias tecnológicas.
+                Los usuarios reportan problemas, los técnicos reciben notificaciones por correo,
+                se autoasignan tickets y notifican a los usuarios al resolver cada caso.
+            </p>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="stat-number">10+</span>
+                    <span class="stat-label">Módulos</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Roles de usuario</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="stat-number">📧</span>
+                    <span class="stat-label">Notif. automáticas</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">Tickets gestionados</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="project-content">
+        <a href="index.html" class="back-button">Volver al portafolio</a>
+
+        <!-- Descripción -->
+        <section class="project-section">
+            <h2>Descripción del Sistema</h2>
+            <p>
+                El Sistema de Tickets IT es una herramienta de helpdesk diseñada para centralizar y agilizar la
+                atención de incidencias tecnológicas dentro de la empresa. Cualquier colaborador puede abrir un
+                ticket desde su panel, describir el problema, asignarle una categoría y adjuntar capturas de pantalla.
+            </p>
+            <p>
+                Al crearse un ticket, el sistema envía un <strong>correo automático a todos los técnicos IT</strong>
+                disponibles. El técnico que tomará el caso se <strong>autoasigna</strong> el ticket desde su bandeja
+                de entrada o desde el panel del sistema. Una vez resuelto, el sistema envía automáticamente un
+                <strong>correo de notificación al usuario</strong> informando que su incidencia fue atendida,
+                junto con el resumen de la solución aplicada.
+            </p>
+            <p>
+                Adicionalmente, el sistema cuenta con un <strong>centro de tutoriales en video</strong> donde los usuarios
+                pueden aprender a usar el sistema y encontrar guías de resolución de problemas comunes, reduciendo
+                la cantidad de tickets repetitivos.
+            </p>
+        </section>
+
+        <!-- Flujo de notificaciones -->
+        <section class="project-section">
+            <h2>Flujo de Notificaciones</h2>
+            <div class="flow-section">
+                <div class="flow-steps">
+                    <div class="flow-step">
+                        <div class="flow-icon">👤</div>
+                        <h4>Usuario abre ticket</h4>
+                        <p>Describe el problema, selecciona categoría y adjunta evidencia</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-icon">📧</div>
+                        <h4>Correo a técnicos</h4>
+                        <p>El sistema envía email automático a todos los técnicos IT disponibles</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-icon">🙋</div>
+                        <h4>Técnico se asigna</h4>
+                        <p>Un técnico toma el ticket y se autoasigna desde el sistema</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-icon">🔧</div>
+                        <h4>Técnico resuelve</h4>
+                        <p>Documenta la solución aplicada y marca el ticket como resuelto</p>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-icon">✅</div>
+                        <h4>Correo al usuario</h4>
+                        <p>El usuario recibe notificación con el resumen de la solución</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Módulos -->
+        <section class="project-section">
+            <h2>Módulos del Sistema</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">🎫</span>
+                    <h3>Gestión de Tickets</h3>
+                    <p>Creación, seguimiento y cierre de tickets con estados: Abierto, En progreso, En espera, Resuelto y Cerrado. Historial completo de cada incidencia.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">📊</span>
+                    <h3>Dashboard General</h3>
+                    <p>Panel con métricas en tiempo real: tickets abiertos, resolución promedio, carga por técnico, tickets por categoría y gráficas de tendencias.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">👨‍💻</span>
+                    <h3>Panel de Técnicos IT</h3>
+                    <p>Vista exclusiva para técnicos con bandeja de tickets disponibles, autoasignación, gestión de su carga de trabajo y registro de soluciones.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🏷️</span>
+                    <h3>Categorías de Tickets</h3>
+                    <p>Clasificación de incidencias por tipo: Hardware, Software, Red, Correo, Impresoras, Accesos, Instalaciones y más. Configurable por el administrador.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">💻</span>
+                    <h3>Inventario de Equipos</h3>
+                    <p>Lista completa de equipos de la empresa: computadoras, impresoras, servidores, periféricos y más. Cada equipo vinculado a su usuario responsable.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">📧</span>
+                    <h3>Notificaciones por Correo</h3>
+                    <p>Envío automático de emails en cada cambio de estado del ticket: apertura, asignación, actualización y resolución.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🎥</span>
+                    <h3>Centro de Tutoriales</h3>
+                    <p>Biblioteca de videos del sistema y tutoriales de uso para usuarios finales. Reduce tickets repetitivos y empodera a los colaboradores.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">📋</span>
+                    <h3>Información del Ticket</h3>
+                    <p>Vista detallada de cada ticket con historial de comentarios, evidencias adjuntas, tiempo transcurrido, técnico asignado y registro de cambios.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">📈</span>
+                    <h3>Reportes</h3>
+                    <p>Generación de reportes por técnico, categoría, departamento y período. Métricas de tiempo de resolución y satisfacción del usuario.</p>
+                </div>
+                <div class="feature-card">
+                    <span class="feature-icon">🔔</span>
+                    <h3>Prioridades y SLA</h3>
+                    <p>Clasificación de tickets por nivel de prioridad: Crítico, Alto, Medio y Bajo. Alertas automáticas cuando un ticket supera el tiempo esperado de resolución.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mockups del sistema -->
+        <section class="project-section">
+            <h2>Vistas del Sistema</h2>
+            <div class="mockups-grid">
+
+                <!-- Dashboard -->
+                <div class="mockup-window">
+                    <div class="mockup-titlebar">
+                        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+                        <span>Dashboard — Sistema de Tickets IT</span>
+                    </div>
+                    <div class="mockup-body">
+                        <div class="mockup-app">
+                            <div class="mockup-sidebar">
+                                <div class="mockup-sidebar-header">MENÚ</div>
+                                <div class="mockup-sidebar-item active">📊 Dashboard</div>
+                                <div class="mockup-sidebar-item">🎫 Tickets</div>
+                                <div class="mockup-sidebar-item">👨‍💻 Técnicos</div>
+                                <div class="mockup-sidebar-item">🏷️ Categorías</div>
+                                <div class="mockup-sidebar-item">💻 Equipos</div>
+                                <div class="mockup-sidebar-item">🎥 Tutoriales</div>
+                                <div class="mockup-sidebar-item">📈 Reportes</div>
+                                <div class="mockup-sidebar-item">⚙️ Config.</div>
+                            </div>
+                            <div class="mockup-main">
+                                <div class="mockup-main-title">📊 Resumen — Febrero 2026</div>
+                                <div class="kpi-row">
+                                    <div class="kpi-box"><span class="kpi-val">38</span><span class="kpi-lbl">Abiertos</span></div>
+                                    <div class="kpi-box"><span class="kpi-val">12</span><span class="kpi-lbl">En progreso</span></div>
+                                    <div class="kpi-box"><span class="kpi-val" style="color:#10b981">124</span><span class="kpi-lbl">Resueltos</span></div>
+                                    <div class="kpi-box"><span class="kpi-val" style="color:#ef4444">5</span><span class="kpi-lbl">Críticos</span></div>
+                                </div>
+                                <div style="font-size:0.65rem;color:#1e1b4b;font-weight:700;margin-bottom:5px;">Tickets por semana</div>
+                                <div class="mock-chart" style="margin-bottom:20px;">
+                                    <div class="mock-bar" style="height:50%;background:#c7d2fe;"><span class="mock-bar-lbl">S1</span></div>
+                                    <div class="mock-bar" style="height:75%;background:#818cf8;"><span class="mock-bar-lbl">S2</span></div>
+                                    <div class="mock-bar" style="height:60%;background:#6366f1;"><span class="mock-bar-lbl">S3</span></div>
+                                    <div class="mock-bar" style="height:90%;background:#4f46e5;"><span class="mock-bar-lbl">S4</span></div>
+                                </div>
+                                <div style="margin-top:12px;">
+                                    <div style="display:flex;justify-content:space-between;font-size:0.62rem;color:#374151;background:white;padding:5px 8px;border-radius:6px;border:1px solid #e0e7ff;margin-bottom:4px;">
+                                        <span>⏱ Tiempo promedio resolución</span><strong style="color:#4f46e5">4.2 hrs</strong>
+                                    </div>
+                                    <div style="display:flex;justify-content:space-between;font-size:0.62rem;color:#374151;background:white;padding:5px 8px;border-radius:6px;border:1px solid #e0e7ff;">
+                                        <span>😊 Satisfacción de usuarios</span><strong style="color:#10b981">94%</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabla de tickets -->
+                <div class="mockup-window">
+                    <div class="mockup-titlebar">
+                        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+                        <span>Tickets — Lista General</span>
+                    </div>
+                    <div class="mockup-body">
+                        <div class="mockup-app">
+                            <div class="mockup-sidebar">
+                                <div class="mockup-sidebar-header">MENÚ</div>
+                                <div class="mockup-sidebar-item">📊 Dashboard</div>
+                                <div class="mockup-sidebar-item active">🎫 Tickets</div>
+                                <div class="mockup-sidebar-item">👨‍💻 Técnicos</div>
+                                <div class="mockup-sidebar-item">🏷️ Categorías</div>
+                                <div class="mockup-sidebar-item">💻 Equipos</div>
+                                <div class="mockup-sidebar-item">🎥 Tutoriales</div>
+                                <div class="mockup-sidebar-item">📈 Reportes</div>
+                            </div>
+                            <div class="mockup-main">
+                                <div class="mockup-main-title">🎫 Tickets Activos</div>
+                                <table class="mock-table">
+                                    <thead><tr><th>#</th><th>Asunto</th><th>Cat.</th><th>Prio.</th><th>Estado</th><th>Técnico</th></tr></thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>#1045</td>
+                                            <td>PC no enciende</td>
+                                            <td><span class="mock-badge badge-gray">HW</span></td>
+                                            <td><span class="prio-dot prio-high"></span>Alto</td>
+                                            <td><span class="mock-badge badge-blue">Progreso</span></td>
+                                            <td><span class="mock-avatar" style="background:#4f46e5">CL</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>#1044</td>
+                                            <td>Sin acceso VPN</td>
+                                            <td><span class="mock-badge badge-purple">Red</span></td>
+                                            <td><span class="prio-dot prio-high"></span>Alto</td>
+                                            <td><span class="mock-badge badge-yellow">Abierto</span></td>
+                                            <td>—</td>
+                                        </tr>
+                                        <tr>
+                                            <td>#1043</td>
+                                            <td>Error Excel</td>
+                                            <td><span class="mock-badge badge-blue">SW</span></td>
+                                            <td><span class="prio-dot prio-medium"></span>Medio</td>
+                                            <td><span class="mock-badge badge-blue">Progreso</span></td>
+                                            <td><span class="mock-avatar" style="background:#7c3aed">MR</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>#1042</td>
+                                            <td>Impresora atascada</td>
+                                            <td><span class="mock-badge badge-gray">HW</span></td>
+                                            <td><span class="prio-dot prio-low"></span>Bajo</td>
+                                            <td><span class="mock-badge badge-green">Resuelto</span></td>
+                                            <td><span class="mock-avatar" style="background:#059669">JP</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>#1041</td>
+                                            <td>Correo no llega</td>
+                                            <td><span class="mock-badge badge-blue">Mail</span></td>
+                                            <td><span class="prio-dot prio-high"></span>Alto</td>
+                                            <td><span class="mock-badge badge-yellow">Abierto</span></td>
+                                            <td>—</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Correos a técnicos + autoasignación -->
+                <div class="mockup-window">
+                    <div class="mockup-titlebar">
+                        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+                        <span>Bandeja Técnico — Notificaciones</span>
+                    </div>
+                    <div class="mockup-body">
+                        <div class="mockup-app">
+                            <div class="mockup-sidebar">
+                                <div class="mockup-sidebar-header">MENÚ</div>
+                                <div class="mockup-sidebar-item">📊 Dashboard</div>
+                                <div class="mockup-sidebar-item active">🎫 Tickets</div>
+                                <div class="mockup-sidebar-item">👨‍💻 Técnicos</div>
+                                <div class="mockup-sidebar-item">🏷️ Categorías</div>
+                                <div class="mockup-sidebar-item">💻 Equipos</div>
+                                <div class="mockup-sidebar-item">🎥 Tutoriales</div>
+                                <div class="mockup-sidebar-item">📈 Reportes</div>
+                            </div>
+                            <div class="mockup-main">
+                                <div class="mockup-main-title">📧 Correos Recibidos — Técnico: C. López</div>
+                                <div class="mock-email unread">
+                                    <div class="email-header">
+                                        <span class="email-from">🔔 HelpDesk IT</span>
+                                        <span class="email-time">hace 5 min</span>
+                                    </div>
+                                    <div class="email-subject">[Nuevo Ticket #1044] Sin acceso VPN — Prioridad: Alto</div>
+                                    <div class="email-body">Usuario: Ana Torres. Área: Ventas. No puede conectarse a la VPN desde ayer. Requiere atención urgente.</div>
+                                    <div><span class="email-tag">🙋 Asignarme este ticket</span></div>
+                                </div>
+                                <div class="mock-email unread">
+                                    <div class="email-header">
+                                        <span class="email-from">🔔 HelpDesk IT</span>
+                                        <span class="email-time">hace 22 min</span>
+                                    </div>
+                                    <div class="email-subject">[Nuevo Ticket #1041] Correo corporativo no llega — Prioridad: Alto</div>
+                                    <div class="email-body">Usuario: Pedro Ramos. Área: RRHH. No recibe correos desde las 8 AM. Revisión urgente del servidor de mail.</div>
+                                    <div><span class="email-tag">🙋 Asignarme este ticket</span></div>
+                                </div>
+                                <div class="mock-email">
+                                    <div class="email-header">
+                                        <span class="email-from">✅ HelpDesk IT</span>
+                                        <span class="email-time">hace 1 hr</span>
+                                    </div>
+                                    <div class="email-subject">[Ticket #1039 Resuelto] Notificado al usuario</div>
+                                    <div class="email-body">El usuario fue notificado que su ticket fue resuelto satisfactoriamente.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Técnicos IT -->
+                <div class="mockup-window">
+                    <div class="mockup-titlebar">
+                        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+                        <span>Técnicos IT — Carga de Trabajo</span>
+                    </div>
+                    <div class="mockup-body">
+                        <div class="mockup-app">
+                            <div class="mockup-sidebar">
+                                <div class="mockup-sidebar-header">MENÚ</div>
+                                <div class="mockup-sidebar-item">📊 Dashboard</div>
+                                <div class="mockup-sidebar-item">🎫 Tickets</div>
+                                <div class="mockup-sidebar-item active">👨‍💻 Técnicos</div>
+                                <div class="mockup-sidebar-item">🏷️ Categorías</div>
+                                <div class="mockup-sidebar-item">💻 Equipos</div>
+                                <div class="mockup-sidebar-item">🎥 Tutoriales</div>
+                                <div class="mockup-sidebar-item">📈 Reportes</div>
+                            </div>
+                            <div class="mockup-main">
+                                <div class="mockup-main-title">👨‍💻 Panel de Técnicos</div>
+                                <div class="mock-tech-list">
+                                    <div class="mock-tech-item">
+                                        <div class="tech-avatar" style="background:#4f46e5">CL</div>
+                                        <div class="mock-tech-info">
+                                            <div class="t-name">Carlos López</div>
+                                            <div class="t-spec">Red & Servidores</div>
+                                        </div>
+                                        <div class="mock-tech-badges">
+                                            <div class="t-open">3 abiertos</div>
+                                            <div class="t-load"><span class="mock-badge badge-yellow">Carga Media</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="mock-tech-item">
+                                        <div class="tech-avatar" style="background:#7c3aed">MR</div>
+                                        <div class="mock-tech-info">
+                                            <div class="t-name">María Ríos</div>
+                                            <div class="t-spec">Software & SO</div>
+                                        </div>
+                                        <div class="mock-tech-badges">
+                                            <div class="t-open">5 abiertos</div>
+                                            <div class="t-load"><span class="mock-badge badge-red">Carga Alta</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="mock-tech-item">
+                                        <div class="tech-avatar" style="background:#059669">JP</div>
+                                        <div class="mock-tech-info">
+                                            <div class="t-name">José Pinto</div>
+                                            <div class="t-spec">Hardware & PC</div>
+                                        </div>
+                                        <div class="mock-tech-badges">
+                                            <div class="t-open">1 abierto</div>
+                                            <div class="t-load"><span class="mock-badge badge-green">Disponible</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="mock-tech-item">
+                                        <div class="tech-avatar" style="background:#b45309">AL</div>
+                                        <div class="mock-tech-info">
+                                            <div class="t-name">Ana Lara</div>
+                                            <div class="t-spec">Correo & Accesos</div>
+                                        </div>
+                                        <div class="mock-tech-badges">
+                                            <div class="t-open">2 abiertos</div>
+                                            <div class="t-load"><span class="mock-badge badge-yellow">Carga Media</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inventario de equipos -->
+                <div class="mockup-window">
+                    <div class="mockup-titlebar">
+                        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+                        <span>Equipos — Inventario de la Empresa</span>
+                    </div>
+                    <div class="mockup-body">
+                        <div class="mockup-app">
+                            <div class="mockup-sidebar">
+                                <div class="mockup-sidebar-header">MENÚ</div>
+                                <div class="mockup-sidebar-item">📊 Dashboard</div>
+                                <div class="mockup-sidebar-item">🎫 Tickets</div>
+                                <div class="mockup-sidebar-item">👨‍💻 Técnicos</div>
+                                <div class="mockup-sidebar-item">🏷️ Categorías</div>
+                                <div class="mockup-sidebar-item active">💻 Equipos</div>
+                                <div class="mockup-sidebar-item">🎥 Tutoriales</div>
+                                <div class="mockup-sidebar-item">📈 Reportes</div>
+                            </div>
+                            <div class="mockup-main">
+                                <div class="mockup-main-title">💻 Inventario (42 equipos registrados)</div>
+                                <div class="mock-equipo-grid">
+                                    <div class="mock-equipo-item">
+                                        <span class="mock-equipo-icon">🖥️</span>
+                                        <div class="mock-equipo-info">
+                                            <div class="eq-name">PC-VENT-01</div>
+                                            <div class="eq-model">Dell OptiPlex 7090</div>
+                                            <div class="eq-user">Ana Torres · Ventas</div>
+                                        </div>
+                                    </div>
+                                    <div class="mock-equipo-item">
+                                        <span class="mock-equipo-icon">💻</span>
+                                        <div class="mock-equipo-info">
+                                            <div class="eq-name">LAP-RRHH-03</div>
+                                            <div class="eq-model">HP EliteBook 840</div>
+                                            <div class="eq-user">Pedro Ramos · RRHH</div>
+                                        </div>
+                                    </div>
+                                    <div class="mock-equipo-item">
+                                        <span class="mock-equipo-icon">🖨️</span>
+                                        <div class="mock-equipo-info">
+                                            <div class="eq-name">IMP-ADM-02</div>
+                                            <div class="eq-model">HP LaserJet Pro</div>
+                                            <div class="eq-user">Área: Administración</div>
+                                        </div>
+                                    </div>
+                                    <div class="mock-equipo-item">
+                                        <span class="mock-equipo-icon">🖥️</span>
+                                        <div class="mock-equipo-info">
+                                            <div class="eq-name">PC-CONT-05</div>
+                                            <div class="eq-model">Lenovo ThinkCentre</div>
+                                            <div class="eq-user">L. Vargas · Contab.</div>
+                                        </div>
+                                    </div>
+                                    <div class="mock-equipo-item">
+                                        <span class="mock-equipo-icon">🖧</span>
+                                        <div class="mock-equipo-info">
+                                            <div class="eq-name">SRV-MAIN-01</div>
+                                            <div class="eq-model">Dell PowerEdge R740</div>
+                                            <div class="eq-user">Servidor Principal</div>
+                                        </div>
+                                    </div>
+                                    <div class="mock-equipo-item">
+                                        <span class="mock-equipo-icon">📱</span>
+                                        <div class="mock-equipo-info">
+                                            <div class="eq-name">MOB-GER-01</div>
+                                            <div class="eq-model">Samsung Galaxy S24</div>
+                                            <div class="eq-user">J. Morales · Gerencia</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Centro de tutoriales -->
+                <div class="mockup-window">
+                    <div class="mockup-titlebar">
+                        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+                        <span>Tutoriales — Centro de Ayuda en Video</span>
+                    </div>
+                    <div class="mockup-body">
+                        <div class="mockup-app">
+                            <div class="mockup-sidebar">
+                                <div class="mockup-sidebar-header">MENÚ</div>
+                                <div class="mockup-sidebar-item">📊 Dashboard</div>
+                                <div class="mockup-sidebar-item">🎫 Tickets</div>
+                                <div class="mockup-sidebar-item">👨‍💻 Técnicos</div>
+                                <div class="mockup-sidebar-item">🏷️ Categorías</div>
+                                <div class="mockup-sidebar-item">💻 Equipos</div>
+                                <div class="mockup-sidebar-item active">🎥 Tutoriales</div>
+                                <div class="mockup-sidebar-item">📈 Reportes</div>
+                            </div>
+                            <div class="mockup-main">
+                                <div class="mockup-main-title">🎥 Videos y Tutoriales del Sistema</div>
+                                <div class="mock-video-list">
+                                    <div class="mock-video-row">
+                                        <div class="mock-video-thumb">▶️</div>
+                                        <div class="mock-video-info">
+                                            <div class="v-title">Cómo abrir un ticket de soporte</div>
+                                            <div class="v-dur">⏱ 3:42 · Tutorial básico</div>
+                                        </div>
+                                    </div>
+                                    <div class="mock-video-row">
+                                        <div class="mock-video-thumb">▶️</div>
+                                        <div class="mock-video-info">
+                                            <div class="v-title">Seguimiento y estado de mi ticket</div>
+                                            <div class="v-dur">⏱ 2:18 · Tutorial básico</div>
+                                        </div>
+                                    </div>
+                                    <div class="mock-video-row">
+                                        <div class="mock-video-thumb">▶️</div>
+                                        <div class="mock-video-info">
+                                            <div class="v-title">Cómo conectarse a la VPN corporativa</div>
+                                            <div class="v-dur">⏱ 5:10 · Guía técnica</div>
+                                        </div>
+                                    </div>
+                                    <div class="mock-video-row">
+                                        <div class="mock-video-thumb">▶️</div>
+                                        <div class="mock-video-info">
+                                            <div class="v-title">Configurar correo en Outlook</div>
+                                            <div class="v-dur">⏱ 4:25 · Guía técnica</div>
+                                        </div>
+                                    </div>
+                                    <div class="mock-video-row">
+                                        <div class="mock-video-thumb">▶️</div>
+                                        <div class="mock-video-info">
+                                            <div class="v-title">Panel del técnico — Asignar tickets</div>
+                                            <div class="v-dur">⏱ 6:05 · Para técnicos IT</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Categorías de tickets -->
+        <section class="project-section">
+            <h2>Categorías de Tickets</h2>
+            <p>El sistema organiza los tickets por categoría para una mejor distribución entre técnicos y análisis de incidencias recurrentes.</p>
+            <div class="categories-grid">
+                <div class="category-chip">
+                    <span class="cat-icon">🖥️</span>
+                    <div class="cat-name">Hardware</div>
+                    <div class="cat-count">PCs, laptops, periféricos</div>
+                </div>
+                <div class="category-chip">
+                    <span class="cat-icon">💿</span>
+                    <div class="cat-name">Software</div>
+                    <div class="cat-count">Apps, SO, licencias</div>
+                </div>
+                <div class="category-chip">
+                    <span class="cat-icon">🌐</span>
+                    <div class="cat-name">Red / VPN</div>
+                    <div class="cat-count">Conectividad, acceso</div>
+                </div>
+                <div class="category-chip">
+                    <span class="cat-icon">📧</span>
+                    <div class="cat-name">Correo</div>
+                    <div class="cat-count">Outlook, spam, config</div>
+                </div>
+                <div class="category-chip">
+                    <span class="cat-icon">🖨️</span>
+                    <div class="cat-name">Impresoras</div>
+                    <div class="cat-count">Atasco, drivers, tóner</div>
+                </div>
+                <div class="category-chip">
+                    <span class="cat-icon">🔐</span>
+                    <div class="cat-name">Accesos</div>
+                    <div class="cat-count">Contraseñas, permisos</div>
+                </div>
+                <div class="category-chip">
+                    <span class="cat-icon">📦</span>
+                    <div class="cat-name">Instalaciones</div>
+                    <div class="cat-count">Software nuevo, equipos</div>
+                </div>
+                <div class="category-chip">
+                    <span class="cat-icon">🖧</span>
+                    <div class="cat-name">Servidores</div>
+                    <div class="cat-count">Caídas, backups, BD</div>
+                </div>
+                <div class="category-chip">
+                    <span class="cat-icon">📱</span>
+                    <div class="cat-name">Móviles</div>
+                    <div class="cat-count">Teléfonos corporativos</div>
+                </div>
+                <div class="category-chip">
+                    <span class="cat-icon">❓</span>
+                    <div class="cat-name">Otros</div>
+                    <div class="cat-count">Sin categoría definida</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Área de tutoriales -->
+        <section class="project-section">
+            <h2>Centro de Tutoriales y Videos</h2>
+            <p>
+                El sistema incluye una sección dedicada de tutoriales en video, accesible para todos los usuarios
+                desde el menú principal. Esta área reduce la carga de tickets repetitivos y empodera a los
+                colaboradores con recursos de autoayuda disponibles en todo momento.
+            </p>
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="play-btn">▶</div>
+                        <span style="font-size:0.75rem;opacity:0.8;">Primeros pasos</span>
+                        <span class="vid-duration">3:42</span>
+                    </div>
+                    <div class="video-card-body">
+                        <span class="vid-tag">BÁSICO</span>
+                        <h4>Cómo abrir un ticket de soporte</h4>
+                        <p>Guía paso a paso para crear y enviar un ticket de soporte correctamente, adjuntar evidencia y seleccionar la categoría.</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="play-btn">▶</div>
+                        <span style="font-size:0.75rem;opacity:0.8;">Red corporativa</span>
+                        <span class="vid-duration">5:10</span>
+                    </div>
+                    <div class="video-card-body">
+                        <span class="vid-tag">GUÍA TÉCNICA</span>
+                        <h4>Cómo conectarse a la VPN</h4>
+                        <p>Tutorial completo de configuración y conexión a la red privada virtual de la empresa desde casa o fuera de la oficina.</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="play-btn">▶</div>
+                        <span style="font-size:0.75rem;opacity:0.8;">Para técnicos IT</span>
+                        <span class="vid-duration">6:05</span>
+                    </div>
+                    <div class="video-card-body">
+                        <span class="vid-tag">TÉCNICOS</span>
+                        <h4>Panel del técnico — Asignación</h4>
+                        <p>Cómo usar el panel de técnico: ver tickets disponibles, autoasignarse, documentar soluciones y notificar al usuario.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roles -->
+        <section class="project-section">
+            <h2>Roles del Sistema</h2>
+            <div class="roles-grid">
+                <div class="role-card">
+                    <span class="role-icon">👤</span>
+                    <h3>Usuario Final</h3>
+                    <ul>
+                        <li>Abrir tickets de soporte</li>
+                        <li>Ver estado de sus tickets</li>
+                        <li>Agregar comentarios</li>
+                        <li>Adjuntar capturas</li>
+                        <li>Recibir notif. por correo</li>
+                        <li>Ver tutoriales en video</li>
+                        <li>Calificar atención recibida</li>
+                    </ul>
+                </div>
+                <div class="role-card">
+                    <span class="role-icon">👨‍💻</span>
+                    <h3>Técnico IT</h3>
+                    <ul>
+                        <li>Recibir correos de tickets</li>
+                        <li>Autoasignarse tickets</li>
+                        <li>Ver carga de otros técnicos</li>
+                        <li>Documentar la solución</li>
+                        <li>Cambiar estado del ticket</li>
+                        <li>Adjuntar archivos</li>
+                        <li>Notificar al usuario al resolver</li>
+                    </ul>
+                </div>
+                <div class="role-card">
+                    <span class="role-icon">🛡️</span>
+                    <h3>Administrador IT</h3>
+                    <ul>
+                        <li>Gestión de usuarios y técnicos</li>
+                        <li>Configurar categorías</li>
+                        <li>Ver todos los tickets</li>
+                        <li>Gestionar inventario de equipos</li>
+                        <li>Subir tutoriales en video</li>
+                        <li>Exportar reportes</li>
+                        <li>Configurar SLA y prioridades</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stack tecnológico -->
+        <section class="project-section">
+            <h2>Stack Tecnológico</h2>
+            <div class="tech-stack">
+                <span class="tech-tag">Laravel 11</span>
+                <span class="tech-tag">PHP 8.3</span>
+                <span class="tech-tag">Blade Templates</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">Bootstrap 5</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Laravel Mail</span>
+                <span class="tech-tag">Queue Jobs</span>
+                <span class="tech-tag">Chart.js</span>
+                <span class="tech-tag">Laravel Storage</span>
+                <span class="tech-tag">Laravel Policies</span>
+            </div>
+        </section>
+
+        <!-- Impacto -->
+        <section class="project-section">
+            <h2>Impacto del Sistema</h2>
+            <ul class="impact-list">
+                <li>Centralización de todas las solicitudes IT en un solo canal digital trazable</li>
+                <li>Eliminación de solicitudes informales por WhatsApp, papel o verbales sin seguimiento</li>
+                <li>Notificaciones automáticas por correo garantizan respuesta oportuna de los técnicos</li>
+                <li>La autoasignación evita cuellos de botella y distribuye la carga equitativamente</li>
+                <li>Los usuarios siempre están informados del estado de su ticket sin necesitar llamar</li>
+                <li>El inventario de equipos permite vincular incidencias al historial del hardware</li>
+                <li>Los tutoriales en video reducen tickets repetitivos de bajo impacto</li>
+                <li>Los reportes permiten identificar equipos problemáticos y optimizar el soporte</li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <a href="mailto:tu@email.com" class="footer-link">Mensaje</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Encuéntrame en</h4>
+                    <ul class="social-links">
+                        <li><a href="https://github.com/tuusuario" target="_blank" class="footer-link">GitHub</a></li>
+                        <li><a href="https://www.linkedin.com/in/dangebin-murillo-411981306" target="_blank" class="footer-link">LinkedIn</a></li>
+                        <li><a href="https://twitter.com/tuusuario" target="_blank" class="footer-link">Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Dangebin Murillo</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
